@@ -62,8 +62,8 @@ def stats(update, context):
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://www.github.com/anasty17/mirror-leech-telegram-bot")
-    buttons.buildbutton("Report Group", "https://t.me/+MwgSi5vmQEA2N2Vk")
+    buttons.buildbutton("Channel", "https://t.me/memoryfull0")
+    buttons.buildbutton("Group", "https://t.me/torrent_drive1")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
@@ -72,7 +72,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update, reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update, reply_markup)
+        sendMarkup('This Bot Only Works At <b>Torrent/Leech downloaded</b> Group', context.bot, update, reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting...", context.bot, update)
@@ -104,96 +104,68 @@ def log(update, context):
     sendLogFile(context.bot, update)
 
 
-help_string_telegraph = f'''<br>
-<b>/{BotCommands.HelpCommand}</b>: To get this message
-<br><br>
-<b>/{BotCommands.MirrorCommand}</b> [download_url][magnet_link]: Start mirroring to Google Drive. Send <b>/{BotCommands.MirrorCommand}</b> for more help
-<br><br>
-<b>/{BotCommands.ZipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder compressed with zip extension
-<br><br>
-<b>/{BotCommands.UnzipMirrorCommand}</b> [download_url][magnet_link]: Start mirroring and upload the file/folder extracted from any archive extension
-<br><br>
-<b>/{BotCommands.QbMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start Mirroring using qBittorrent, Use <b>/{BotCommands.QbMirrorCommand} s</b> to select files before downloading
-<br><br>
-<b>/{BotCommands.QbZipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start mirroring using qBittorrent and upload the file/folder compressed with zip extension
-<br><br>
-<b>/{BotCommands.QbUnzipMirrorCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start mirroring using qBittorrent and upload the file/folder extracted from any archive extension
-<br><br>
-<b>/{BotCommands.LeechCommand}</b> [download_url][magnet_link]: Start leeching to Telegram, Use <b>/{BotCommands.LeechCommand} s</b> to select files before leeching
-<br><br>
-<b>/{BotCommands.ZipLeechCommand}</b> [download_url][magnet_link]: Start leeching to Telegram and upload the file/folder compressed with zip extension
-<br><br>
-<b>/{BotCommands.UnzipLeechCommand}</b> [download_url][magnet_link][torent_file]: Start leeching to Telegram and upload the file/folder extracted from any archive extension
-<br><br>
-<b>/{BotCommands.QbLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent, Use <b>/{BotCommands.QbLeechCommand} s</b> to select files before leeching
-<br><br>
-<b>/{BotCommands.QbZipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent and upload the file/folder compressed with zip extension
-<br><br>
-<b>/{BotCommands.QbUnzipLeechCommand}</b> [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using qBittorrent and upload the file/folder extracted from any archive extension
-<br><br>
-<b>/{BotCommands.CloneCommand}</b> [drive_url][gdtot_url]: Copy file/folder to Google Drive
-<br><br>
-<b>/{BotCommands.CountCommand}</b> [drive_url][gdtot_url]: Count file/folder of Google Drive
-<br><br>
-<b>/{BotCommands.DeleteCommand}</b> [drive_url]: Delete file/folder from Google Drive (Only Owner & Sudo)
-<br><br>
-<b>/{BotCommands.WatchCommand}</b> [yt-dlp supported link]: Mirror yt-dlp supported link. Send <b>/{BotCommands.WatchCommand}</b> for more help
-<br><br>
-<b>/{BotCommands.ZipWatchCommand}</b> [yt-dlp supported link]: Mirror yt-dlp supported link as zip
-<br><br>
-<b>/{BotCommands.LeechWatchCommand}</b> [yt-dlp supported link]: Leech yt-dlp supported link
-<br><br>
-<b>/{BotCommands.LeechZipWatchCommand}</b> [yt-dlp supported link]: Leech yt-dlp supported link as zip
-<br><br>
-<b>/{BotCommands.LeechSetCommand}</b>: Leech settings
-<br><br>
-<b>/{BotCommands.SetThumbCommand}</b>: Reply photo to set it as Thumbnail
-<br><br>
-<b>/{BotCommands.CancelMirror}</b>: Reply to the message by which the download was initiated and that download will be cancelled
-<br><br>
-<b>/{BotCommands.CancelAllCommand}</b>: Cancel all downloading tasks
-<br><br>
-<b>/{BotCommands.ListCommand}</b> [query]: Search in Google Drive(s)
-<br><br>
-<b>/{BotCommands.SearchCommand}</b> [query]: Search for torrents with API
-<br>sites: <code>rarbg, 1337x, yts, etzv, tgx, torlock, piratebay, nyaasi, ettv</code><br><br>
-<b>/{BotCommands.StatusCommand}</b>: Shows a status of all the downloads
-<br><br>
-<b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
-'''
-
-help = telegraph.create_page(
-        title='Mirror-Leech-Bot Help',
-        content=help_string_telegraph,
-    )["path"]
-
 help_string = f'''
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
+/{BotCommands.MirrorCommand} [download_url]: Start 💽mirroring to Google Drive. Send /{BotCommands.MirrorCommand} for more help
 
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.ZipMirrorCommand} [download_url]: Start mirroring and upload the file/folder compressed with 🔒zip extension
 
-/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
+/{BotCommands.UnzipMirrorCommand} [download_url]: Start mirroring and upload the file/folder ✂️extracted from any archive extension
 
-/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
+/{BotCommands.QbMirrorCommand} [magnet_link][torrent_file][torrent_file_url]:  Start Mirroring using 🧲magnet Torrent file fast download in /{BotCommands.MirrorCommand} Command, Use /{BotCommands.QbMirrorCommand} s to select files before downloading
 
-/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner)
+/{BotCommands.QbZipMirrorCommand} [magnet_link][torrent_file][torrent_file_url]: Start mirroring using torrent 🧲magnet link and upload the file/folder compressed with zip extension
 
-/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner)
+/{BotCommands.QbUnzipMirrorCommand} [magnet_link][torrent_file][torrent_file_url]: Start mirroring using torrent 🧲magnet link and upload the file/folder ✂️extracted from any archive extension
 
-/{BotCommands.RestartCommand}: Restart and update the bot
+/{BotCommands.LeechCommand} [download_url]: Start leeching to Telegram, Use /{BotCommands.LeechCommand} s to select files before leeching
 
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
+/{BotCommands.ZipLeechCommand} [download_url]: Start leeching to Telegram and upload the file/folder compressed with zip extension
 
-/{BotCommands.SpeedCommand}: Check Internet Speed of the Host
+/{BotCommands.UnzipLeechCommand} [download_url]: Start leeching to Telegram and upload the file/folder ✂️extracted from any archive extension
 
-/{BotCommands.ShellCommand}: Run commands in Shell (Only Owner)
+/{BotCommands.QbLeechCommand} [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using torrent 🧲magnet link, Use /{BotCommands.QbLeechCommand} s to select files before leeching
 
-/{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
+/{BotCommands.QbZipLeechCommand} [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using torrent magnet link and upload the file/folder compressed with 🔒zip extension
+
+/{BotCommands.QbUnzipLeechCommand} [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using torrent ✂️🧲magnet link and upload the file/folder extracted from any archive extension
+
+/{BotCommands.CloneCommand} [drive_url][gdtot_url]: Clone Google Drive or <b>GDToT</b> file/folder 
+
+/{BotCommands.CountCommand} [drive_url][gdtot_url]: Count file/folder of Google 📂Drive or GDToT
+
+/{BotCommands.WatchCommand} [YouTube-dlp supported link]: Mirror 🎦YT-dlp supported link. Send /{BotCommands.WatchCommand} for more help
+
+/{BotCommands.ZipWatchCommand} [YouTube-dlp supported link]: Mirror 🎦YT-dlp supported link as 🔒zip
+
+/{BotCommands.LeechWatchCommand} [YouTube-dlp supported link]: Leech 🎦YT-dlp supported link
+
+/{BotCommands.LeechZipWatchCommand} [YouTube-dlp supported link]: Leech 🎦YT-dlp supported link as zip
+
+/{BotCommands.LeechSetCommand}: Leech settings
+
+/{BotCommands.SetThumbCommand}: Reply photo to set it as Thumbnail🖼️ (Leech file)
+
+/{BotCommands.CancelMirror}: Reply to the message by which the download was initiated and that download will be cancelled
+
+/{BotCommands.CancelAllCommand}: Cancel All Admin Only😅
+
+/{BotCommands.ListCommand} [query]: Search🔍 in Google 📂Drive(s)
+
+/{BotCommands.StatusCommand}: Shows a status📊 of all the downloads
+
+/{BotCommands.StatsCommand}: Show 💻Stats of the machine the bot is hosted on
+
+/{BotCommands.SpeedCommand}: Check Internet Speed of the Host by ookla
+
+/{BotCommands.SearchCommand} [query]: 🔍 any file in torrents
+<b>Supported Sites</b>: <code>rarbg, 1337x, yts, etzv, tgx, torlock, piratebay, nyaasi, ettv</code>
+
+<b>Other Help DM</b>👇👇👇
 '''
 
 def bot_help(update, context):
     button = button_build.ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
+    button.buildbutton("DM", "https://t.me/privatemessagingmbot")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update, reply_markup)
 
@@ -244,7 +216,7 @@ def main():
         os.remove(".restartmsg")
     elif OWNER_ID:
         try:
-            text = "<b>Bot Restarted!</b>"
+            text = ""
             bot.sendMessage(chat_id=OWNER_ID, text=text, parse_mode=ParseMode.HTML)
             if AUTHORIZED_CHATS:
                 for i in AUTHORIZED_CHATS:
