@@ -63,7 +63,7 @@ def stats(update, context):
 def start(update, context):
     buttons = button_build.ButtonMaker()
     buttons.buildbutton("Channel", "https://t.me/memoryfull0")
-    buttons.buildbutton("Group", "https://t.me/torrent_drive1")
+    buttons.buildbutton("Group", "https://t.me/adulttorrentmirror")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
@@ -72,7 +72,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update, reply_markup)
     else:
-        sendMarkup('This Bot Only Works At <b>Torrent/Leech downloaded</b> Group', context.bot, update, reply_markup)
+        sendMarkup('This Bot Only Works At <b>PHub Downloaded</b> Group', context.bot, update, reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting...", context.bot, update)
@@ -117,18 +117,6 @@ help_string = f'''
 
 /{BotCommands.QbUnzipMirrorCommand} [magnet_link][torrent_file][torrent_file_url]: Start mirroring using torrent 🧲magnet link and upload the file/folder ✂️extracted from any archive extension
 
-/{BotCommands.LeechCommand} [download_url]: Start leeching to Telegram, Use /{BotCommands.LeechCommand} s to select files before leeching
-
-/{BotCommands.ZipLeechCommand} [download_url]: Start leeching to Telegram and upload the file/folder compressed with zip extension
-
-/{BotCommands.UnzipLeechCommand} [download_url]: Start leeching to Telegram and upload the file/folder ✂️extracted from any archive extension
-
-/{BotCommands.QbLeechCommand} [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using torrent 🧲magnet link, Use /{BotCommands.QbLeechCommand} s to select files before leeching
-
-/{BotCommands.QbZipLeechCommand} [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using torrent magnet link and upload the file/folder compressed with 🔒zip extension
-
-/{BotCommands.QbUnzipLeechCommand} [magnet_link][torrent_file][torrent_file_url]: Start leeching to Telegram using torrent ✂️🧲magnet link and upload the file/folder extracted from any archive extension
-
 /{BotCommands.CloneCommand} [drive_url][gdtot_url]: Clone Google Drive or <b>GDToT</b> file/folder 
 
 /{BotCommands.CountCommand} [drive_url][gdtot_url]: Count file/folder of Google 📂Drive or GDToT
@@ -136,14 +124,6 @@ help_string = f'''
 /{BotCommands.WatchCommand} [YouTube-dlp supported link]: Mirror 🎦YT-dlp supported link. Send /{BotCommands.WatchCommand} for more help
 
 /{BotCommands.ZipWatchCommand} [YouTube-dlp supported link]: Mirror 🎦YT-dlp supported link as 🔒zip
-
-/{BotCommands.LeechWatchCommand} [YouTube-dlp supported link]: Leech 🎦YT-dlp supported link
-
-/{BotCommands.LeechZipWatchCommand} [YouTube-dlp supported link]: Leech 🎦YT-dlp supported link as zip
-
-/{BotCommands.LeechSetCommand}: Leech settings
-
-/{BotCommands.SetThumbCommand}: Reply photo to set it as Thumbnail🖼️ (Leech file)
 
 /{BotCommands.CancelMirror}: Reply to the message by which the download was initiated and that download will be cancelled
 
@@ -159,13 +139,10 @@ help_string = f'''
 
 /{BotCommands.SearchCommand} [query]: 🔍 any file in torrents
 <b>Supported Sites</b>: <code>rarbg, 1337x, yts, etzv, tgx, torlock, piratebay, nyaasi, ettv</code>
-
-<b>Other Help DM</b>👇👇👇
 '''
 
 def bot_help(update, context):
     button = button_build.ButtonMaker()
-    button.buildbutton("DM", "https://t.me/privatemessagingmbot")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update, reply_markup)
 
