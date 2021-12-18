@@ -403,8 +403,8 @@ def _mirror(bot, update, isZip=False, extract=False, isQbit=False, isLeech=False
         help_msg += "\n<code>/command</code> |newname pswd: mypassword [𝚣𝚒𝚙/𝚞𝚗𝚣𝚒𝚙]"
         help_msg += "\n\n<b>Direct link authorization:</b>"
         help_msg += "\n<code>/command</code> {link} |newname pswd: mypassword\nusername\npassword"
-        help_msg += f"<b>Magnet🧲 file/link download commands</b> /{BotCommands.QbMirrorCommand} /{BotCommands.QbZipMirrorCommand} /{BotCommands.QbUnzipMirrorCommand}"
-        help_msg += f"<b>Example</b>:- /{BotCommands.QbMirrorCommand} magnet:?xt=urn:btih:3F9B37101F71BA0AE162BB08DC6407E5B38B5670&dn..."
+        help_msg += f"\n\n<b>Magnet🧲 file/link download commands</b> /{BotCommands.QbMirrorCommand} /{BotCommands.QbZipMirrorCommand} /{BotCommands.QbUnzipMirrorCommand}"
+        help_msg += f"\n<b>Example</b>:- /{BotCommands.QbMirrorCommand} magnet:?xt=urn:btih:3F9B37101F71BA0AE162BB08DC6407E5B38B5670&dn..."
         return sendMessage(help_msg, bot, update)
     elif not bot_utils.is_mega_link(link) and not isQbit and not bot_utils.is_magnet(link) \
          and not os.path.exists(link) and not bot_utils.is_gdrive_link(link):
